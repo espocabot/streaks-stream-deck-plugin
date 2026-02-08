@@ -4,17 +4,29 @@
 	"Author": "espoca",
 	"Actions": [
 		{
-			"Name": "Counter",
+			"Name": "Increment Counter",
 			"UUID": "com.espocabot.streaks.increment",
-			"Icon": "imgs/actions/counter/icon",
+			"Icon": "imgs/actions/counter/plus",
 			"Tooltip": "Displays a count, which increments by one on press.",
 			"PropertyInspectorPath": "ui/increment-counter.html",
-			"Controllers": [
-				"Keypad"
-			],
+			"Controllers": ["Keypad"],
 			"States": [
 				{
-					"Image": "imgs/actions/counter/key",
+					"Image": "imgs/actions/counter/plus-button",
+					"TitleAlignment": "middle"
+				}
+			]
+		},
+		{
+			"Name": "Reset Counter",
+			"UUID": "com.espocabot.streaks.reset",
+			"Icon": "imgs/actions/counter/reset",
+			"Tooltip": "Resets the count to zero on press.",
+			"PropertyInspectorPath": "ui/reset-counter.html",
+			"Controllers": ["Keypad"],
+			"States": [
+				{
+					"Image": "imgs/actions/counter/reset-button",
 					"TitleAlignment": "middle"
 				}
 			]
