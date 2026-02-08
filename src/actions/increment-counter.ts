@@ -1,4 +1,6 @@
 import { action, type KeyDownEvent, SingletonAction } from "@elgato/streamdeck";
+import { incrementCounter } from "./api";
+import type { CounterSettings } from "./types";
 
 @action({ UUID: "com.espocabot.streaks.increment" })
 export class IncrementCounter extends SingletonAction<CounterSettings> {
@@ -10,29 +12,13 @@ export class IncrementCounter extends SingletonAction<CounterSettings> {
 			return;
 		}
 
-		try {
-			const headers = new Headers();
-			headers.append("x-api-token", settings.apiKey);
-			const res = await fetch(
-				"http://localhost:3000/api/streaks/active/increment",
-				{
-					method: "PATCH",
-					headers,
-				},
-			);
+		const result = await incrementCounter(settings.apiKey);
 
-			if (!res.ok) {
-				ev.action.showAlert();
-				return;
-			}
-
-			ev.action.showOk();
-		} catch (_error) {
+		if (!result.success) {
 			ev.action.showAlert();
+			return;
 		}
+
+		ev.action.showOk();
 	}
 }
-
-type CounterSettings = {
-	apiKey?: string;
-};
