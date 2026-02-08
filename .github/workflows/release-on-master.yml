@@ -53,8 +53,14 @@ jobs:
 
       - name: Create git tag
         run: |
-          git tag v${{ steps.bump.outputs.version }}
-          git push origin v${{ steps.bump.outputs.version }}
+          VERSION=v${{ steps.bump.outputs.version }}
+
+          if git rev-parse "$VERSION" >/dev/null 2>&1; then
+            echo "Tag $VERSION already exists, skipping."
+          else
+            git tag "$VERSION"
+            git push origin "$VERSION"
+          fi
 
       - name: Install Stream Deck CLI
         run: bun add -g @elgato/cli
