@@ -8,8 +8,9 @@ const manifestPath = path.resolve(
 
 const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf-8"));
 
-const [major, minor, patch] = manifest.Version.split(".").map(Number);
-const nextVersion = `${major}.${minor}.${patch + 1}`;
+const [major, minor, patch, build] = manifest.Version.split(".").map(Number);
+
+const nextVersion = `${major}.${minor}.${patch}.${build + 1}`;
 
 manifest.Version = nextVersion;
 
