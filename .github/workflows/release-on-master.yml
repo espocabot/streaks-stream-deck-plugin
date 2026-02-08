@@ -20,6 +20,9 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
 
+      - name: Fetch tags
+        run: git fetch --tags
+
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
@@ -40,7 +43,7 @@ jobs:
       - name: Bump plugin version
         id: bump
         run: |
-          VERSION=$(bun scripts/bump-version.js | tail -n 1 | awk '{print $NF}')
+          VERSION=$(bun scripts/bump-version.js)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
       - name: Commit version bump
@@ -54,13 +57,8 @@ jobs:
       - name: Create git tag
         run: |
           VERSION=v${{ steps.bump.outputs.version }}
-
-          if git rev-parse "$VERSION" >/dev/null 2>&1; then
-            echo "Tag $VERSION already exists, skipping."
-          else
-            git tag "$VERSION"
-            git push origin "$VERSION"
-          fi
+          git tag "$VERSION"
+          git push origin "$VERSION"
 
       - name: Install Stream Deck CLI
         run: bun add -g @elgato/cli
