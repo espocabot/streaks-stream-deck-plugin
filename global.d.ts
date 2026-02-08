@@ -1,3 +1,5 @@
+/** biome-ignore-all lint/suspicious/noExplicitAny: -- IGNORE -- */
+
 declare const __API_BASE_URL__: string;
 
 declare const SDPIComponents: {

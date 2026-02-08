@@ -1,3 +1,5 @@
+/** biome-ignore-all lint/suspicious/noExplicitAny: -- IGNORE -- */
+
 const errorMapping: Record<string, string> = {
 	missing: "You forgot to provide an API key. Please enter it in the settings.",
 	not_found:
@@ -34,14 +36,14 @@ async function validateApiKey() {
 			alert("❌ API key is invalid!");
 			return;
 		}
-		const json = (await res.json()) as any;
+		const json = (await res.json()) as { valid: boolean; reason?: string };
 
-		if (json.valid) {
-			alert("✅ Settings are valid!");
-		} else {
+		if (!json.valid && json.reason) {
 			alert(
 				`❌ API key is invalid! Reason: ${errorMapping[json.reason] || "Unknown error"}`,
 			);
+		} else {
+			alert("✅ Token is valid!");
 		}
 	} catch (_err) {
 		alert(
