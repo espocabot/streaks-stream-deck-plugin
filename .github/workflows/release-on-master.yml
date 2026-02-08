@@ -60,10 +60,12 @@ jobs:
         run: bun add -g @elgato/cli
 
       - name: Package Stream Deck Plugin
+        run: streamdeck pack com.espocabot.streaks.sdPlugin
+
+      - name: Move packaged plugin to dist
         run: |
-          streamdeck package \
-            --force \
-            --output ./dist
+          mkdir -p dist
+          mv *.streamDeckPlugin dist/
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
