@@ -1,7 +1,7 @@
 {
 	"scripts": {
-		"build": "rollup -c",
-		"watch": "rollup -c -w --watch.onEnd=\"streamdeck restart com.espocabot.streaks\"",
+		"build": "NODE_ENV=production rollup -c",
+		"watch": "NODE_ENV=development rollup -c -w --watch.onEnd=\"streamdeck restart com.espocabot.streaks\"",
 		"typecheck": "tsc --noEmit",
 		"lint": "biome check",
 		"lint:fix": "biome format --write"
@@ -12,6 +12,7 @@
 		"@elgato/cli": "^1.7.0",
 		"@rollup/plugin-commonjs": "^28.0.0",
 		"@rollup/plugin-node-resolve": "^15.2.2",
+		"@rollup/plugin-replace": "^6.0.3",
 		"@rollup/plugin-terser": "^0.4.4",
 		"@rollup/plugin-typescript": "^12.1.0",
 		"@tsconfig/node20": "^20.1.2",

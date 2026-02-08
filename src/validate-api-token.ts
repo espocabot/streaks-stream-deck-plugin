@@ -1,4 +1,4 @@
-const errorMapping = {
+const errorMapping: Record<string, string> = {
 	missing: "You forgot to provide an API key. Please enter it in the settings.",
 	not_found:
 		"The provided API key does not exist. Please check for typos and try again.",
@@ -10,8 +10,9 @@ const errorMapping = {
 		"The provided API key is inactive. Please check your account and ensure the key is active.",
 };
 
-// biome-ignore lint/correctness/noUnusedVariables: This file is meant to be imported in an HTML file, so it doesn't export anything.
 async function validateApiKey() {
+	const API_BASE_URL = __API_BASE_URL__;
+
 	const { settings } = await SDPIComponents.streamDeckClient.getSettings();
 	const apiKey = settings.apiKey;
 
@@ -21,22 +22,19 @@ async function validateApiKey() {
 	}
 
 	try {
-		const res = await fetch(
-			"http://localhost:3000/api/stream-deck/token/check",
-			{
-				body: JSON.stringify({ token: apiKey }),
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
+		const res = await fetch(`${API_BASE_URL}/api/stream-deck/token/check`, {
+			body: JSON.stringify({ token: apiKey }),
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
 			},
-		);
+		});
 
 		if (!res.ok) {
 			alert("❌ API key is invalid!");
 			return;
 		}
-		const json = await res.json();
+		const json = (await res.json()) as any;
 
 		if (json.valid) {
 			alert("✅ Settings are valid!");
@@ -51,3 +49,6 @@ async function validateApiKey() {
 		);
 	}
 }
+
+declare const window: any;
+(window as any).validateApiKey = validateApiKey;

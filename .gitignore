@@ -4,3 +4,5 @@ node_modules/
 # Stream Deck files
 *.sdPlugin/bin
 *.sdPlugin/logs
+com.espocabot.streaks.sdPlugin/ui/*.js
+com.espocabot.streaks.sdPlugin/ui/*.map
