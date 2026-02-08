@@ -1,59 +1,63 @@
 {
-	"Name": "Streaks | EspocaBot",
-	"Version": "0.1.0.0",
-	"Author": "espoca",
-	"Actions": [
-		{
-			"Name": "Increment Counter",
-			"UUID": "com.espocabot.streaks.increment",
-			"Icon": "imgs/actions/counter/plus",
-			"Tooltip": "Displays a count, which increments by one on press.",
-			"PropertyInspectorPath": "ui/increment-counter.html",
-			"Controllers": ["Keypad"],
-			"States": [
-				{
-					"Image": "imgs/actions/counter/plus-button",
-					"TitleAlignment": "middle"
-				}
-			]
-		},
-		{
-			"Name": "Reset Counter",
-			"UUID": "com.espocabot.streaks.reset",
-			"Icon": "imgs/actions/counter/reset",
-			"Tooltip": "Resets the count to zero on press.",
-			"PropertyInspectorPath": "ui/reset-counter.html",
-			"Controllers": ["Keypad"],
-			"States": [
-				{
-					"Image": "imgs/actions/counter/reset-button",
-					"TitleAlignment": "middle"
-				}
-			]
-		}
-	],
-	"Category": "Streaks | EspocaBot",
-	"CategoryIcon": "imgs/plugin/category-icon",
-	"CodePath": "bin/plugin.js",
-	"Description": "Manage your game win streaks with one touch. Increment or reset streaks directly from Stream Deck.",
-	"Icon": "imgs/plugin/marketplace",
-	"SDKVersion": 3,
-	"Software": {
-		"MinimumVersion": "6.9"
-	},
-	"OS": [
-		{
-			"Platform": "mac",
-			"MinimumVersion": "12"
-		},
-		{
-			"Platform": "windows",
-			"MinimumVersion": "10"
-		}
-	],
-	"Nodejs": {
-		"Version": "20",
-		"Debug": "enabled"
-	},
-	"UUID": "com.espocabot.streaks"
+  "Name": "Streaks | EspocaBot",
+  "Version": "0.1.0.3",
+  "Author": "espoca",
+  "Actions": [
+    {
+      "Name": "Increment Counter",
+      "UUID": "com.espocabot.streaks.increment",
+      "Icon": "imgs/actions/counter/plus",
+      "Tooltip": "Displays a count, which increments by one on press.",
+      "PropertyInspectorPath": "ui/increment-counter.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/actions/counter/plus-button",
+          "TitleAlignment": "middle"
+        }
+      ]
+    },
+    {
+      "Name": "Reset Counter",
+      "UUID": "com.espocabot.streaks.reset",
+      "Icon": "imgs/actions/counter/reset",
+      "Tooltip": "Resets the count to zero on press.",
+      "PropertyInspectorPath": "ui/reset-counter.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/actions/counter/reset-button",
+          "TitleAlignment": "middle"
+        }
+      ]
+    }
+  ],
+  "Category": "Streaks | EspocaBot",
+  "CategoryIcon": "imgs/plugin/category-icon",
+  "CodePath": "bin/plugin.js",
+  "Description": "Manage your game win streaks with one touch. Increment or reset streaks directly from Stream Deck.",
+  "Icon": "imgs/plugin/marketplace",
+  "SDKVersion": 3,
+  "Software": {
+    "MinimumVersion": "6.9"
+  },
+  "OS": [
+    {
+      "Platform": "mac",
+      "MinimumVersion": "12"
+    },
+    {
+      "Platform": "windows",
+      "MinimumVersion": "10"
+    }
+  ],
+  "Nodejs": {
+    "Version": "20",
+    "Debug": "enabled"
+  },
+  "UUID": "com.espocabot.streaks"
 }
