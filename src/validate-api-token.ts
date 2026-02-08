@@ -1,5 +1,3 @@
-/** biome-ignore-all lint/suspicious/noExplicitAny: -- IGNORE -- */
-
 const errorMapping: Record<string, string> = {
 	missing: "You forgot to provide an API key. Please enter it in the settings.",
 	not_found:
@@ -52,5 +50,4 @@ async function validateApiKey() {
 	}
 }
 
-declare const window: any;
-(window as any).validateApiKey = validateApiKey;
+window.validateApiKey = validateApiKey;
