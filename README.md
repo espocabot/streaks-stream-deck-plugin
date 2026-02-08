@@ -36,6 +36,15 @@ For local development:
 - Link the plugin folder to the Stream Deck plugins directory
 - Run the development watch/build command
 
+## 📝 TODO
+- Add support for internationalization (i18n)
+- Add more actions:
+  - Change between different streaks
+  - Deactivate/reactivate streaks
+  - Decrement streak (maybe)
+  - Display current streak count on the button (maybe)
+  - Add more customization options (e.g., button icons, colors)
+
 ## 📄 License
 
 This project is open source and provided for non-commercial use.
