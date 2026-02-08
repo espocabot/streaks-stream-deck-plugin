@@ -20,9 +20,6 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
 
-      - name: Fetch tags
-        run: git fetch --tags
-
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
@@ -56,9 +53,8 @@ jobs:
 
       - name: Create git tag
         run: |
-          VERSION=v${{ steps.bump.outputs.version }}
-          git tag "$VERSION"
-          git push origin "$VERSION"
+          git tag v${{ steps.bump.outputs.version }}
+          git push origin v${{ steps.bump.outputs.version }}
 
       - name: Install Stream Deck CLI
         run: bun add -g @elgato/cli
