@@ -1,3 +1,4 @@
+import { execSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -8,9 +9,23 @@ const manifestPath = path.resolve(
 
 const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf-8"));
 
-const [major, minor, patch, build] = manifest.Version.split(".").map(Number);
+let [major, minor, patch, build] = manifest.Version.split(".").map(Number);
 
-const nextVersion = `${major}.${minor}.${patch}.${build + 1}`;
+function tagExists(version) {
+	try {
+		execSync(`git rev-parse v${version}`, { stdio: "ignore" });
+		return true;
+	} catch {
+		return false;
+	}
+}
+
+let nextVersion;
+
+do {
+	build += 1;
+	nextVersion = `${major}.${minor}.${patch}.${build}`;
+} while (tagExists(nextVersion));
 
 manifest.Version = nextVersion;
 
