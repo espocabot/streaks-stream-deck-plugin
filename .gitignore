@@ -6,3 +6,5 @@ node_modules/
 *.sdPlugin/logs
 com.espocabot.streaks.sdPlugin/ui/*.js
 com.espocabot.streaks.sdPlugin/ui/*.map
+
+.DS_Store
